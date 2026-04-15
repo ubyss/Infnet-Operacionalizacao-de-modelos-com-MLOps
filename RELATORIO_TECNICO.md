@@ -95,9 +95,11 @@ O repositório inclui workflow GitHub Actions (`.github/workflows/ci.yml`) que i
 ## 10. Como reproduzir
 
 1. `pip install -r requirements.txt`
-2. `python data_prep.py` (ou notebook, seção 1)
-3. `python train.py`
+2. `python data_prep.py` (ou notebook, seção 1) — atalho na raiz; implementação em `breast_cancer_mlops/data_prep.py`
+3. `python train.py` — idem `breast_cancer_mlops/train.py`
 4. `python evaluate.py`
 5. `python tsne_explore.py` (exploração t-SNE)
-6. `uvicorn serve:app` e/ou `streamlit run streamlit_app.py`
+6. `uvicorn serve:app` e/ou `streamlit run streamlit_app.py` (scripts finos na raiz importam o pacote)
 7. `mlflow ui` apontando para a pasta `mlruns/`
+
+Equivalente: `python -m breast_cancer_mlops.train` (e outros módulos), a partir da raiz do repositório.

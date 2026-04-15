@@ -4,11 +4,11 @@ import numpy as np
 from sklearn.manifold import TSNE
 from sklearn.preprocessing import StandardScaler
 
-import train
+from breast_cancer_mlops.train import build_pipelines
 
 
 def test_build_pipelines_three_approaches():
-    assert len(train.build_pipelines()) == 3
+    assert len(build_pipelines()) == 3
 
 
 def test_tsne_fit_small_matrix():

@@ -6,17 +6,19 @@ from pathlib import Path
 import mlflow
 import mlflow.sklearn
 
+from .paths import repo_root
+
 
 def project_root() -> Path:
-    return Path(__file__).resolve().parent
+    return repo_root()
 
 
 def load_model_bundle(root: Path | None = None):
-    root = root or project_root()
+    root = root or repo_root()
     mlflow.set_tracking_uri(f"file:{root / 'mlruns'}")
     sel = root / "artifacts" / "registry_selection.json"
     if not sel.is_file():
-        raise FileNotFoundError("Execute train.py (ou o notebook) antes de carregar o modelo.")
+        raise FileNotFoundError("Execute o treino (train ou notebook) antes de carregar o modelo.")
     with open(sel, encoding="utf-8") as f:
         meta = json.load(f)
     run_id = meta["selected_run_id"]
