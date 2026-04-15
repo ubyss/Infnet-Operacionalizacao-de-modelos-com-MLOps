@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo-Infnet.png" alt="Instituto Infnet" width="300">
+  <img src="docs/img/logo-Infnet.png" alt="Instituto Infnet" width="300">
 </p>
 
 <h1 align="center">Operacionalização de modelos com MLOps</h1>
@@ -26,7 +26,21 @@ Classificação binária (benigno / maligno) no contexto de **câncer de mama**,
 - **API** FastAPI (`serve.py`) e **interface** Streamlit (`streamlit_app.py`);
 - testes de smoke e **CI** (GitHub Actions).
 
-O relatório técnico e as decisões estão em [`RELATORIO_TECNICO.md`](RELATORIO_TECNICO.md). O notebook [`projeto_mlops_breast_cancer.ipynb`](projeto_mlops_breast_cancer.ipynb) orquestra o fluxo completo e inclui **gráficos** (matriz de confusão, ROC, t-SNE, importâncias, distribuição de classes) e opção de subir o Streamlit a partir de uma célula.
+O relatório técnico está em [`RELATORIO_TECNICO.md`](RELATORIO_TECNICO.md). O notebook [`projeto_mlops_breast_cancer.ipynb`](projeto_mlops_breast_cancer.ipynb) orquestra o fluxo e inclui gráficos e opção de subir o Streamlit em uma célula.
+
+## Visualizações (notebook — seção 6.1)
+
+Painel gerado após treino e avaliação (matriz de confusão, ROC, t-SNE, importâncias do Random Forest) e distribuição de classes no treino:
+
+<p align="center">
+  <img src="docs/img/painel-modelo-prod.png" alt="Painel do modelo em produção" width="720"><br>
+  <em>Painel do modelo em produção (holdout + t-SNE + importâncias)</em>
+</p>
+
+<p align="center">
+  <img src="docs/img/classes.png" alt="Distribuição de classes no treino" width="480"><br>
+  <em>Distribuição de classes no conjunto de treino</em>
+</p>
 
 ## Requisitos
 
@@ -73,21 +87,43 @@ Testes:
 pytest tests -q
 ```
 
-## Estrutura principal
+## Estrutura do repositório
 
-| Caminho | Função |
-|--------|--------|
-| `data_prep.py` | Dados, splits, perfil, drift KS |
-| `train.py` | Treino, MLflow, registro do modelo |
-| `evaluate.py` | Métricas no conjunto de teste |
-| `model_io.py` | Carrega modelo versionado |
+```
+├── docs/img/              # Logo Infnet e figuras do README
+├── tests/                 # Pytest (CI)
+├── projeto_mlops_breast_cancer.ipynb
+├── data_prep.py           # Dados, splits, perfil, drift KS
+├── train.py               # Treino + MLflow + registro
+├── evaluate.py            # Métricas no teste
+├── model_io.py            # Carrega modelo versionado
+├── tsne_explore.py        # t-SNE exploratório
+├── serve.py               # API FastAPI
+├── streamlit_app.py       # Interface Streamlit
+├── RELATORIO_TECNICO.md
+├── requirements.txt
+└── .github/workflows/ci.yml
+```
+
+Artefatos gerados localmente (`artifacts/`, `mlruns/`) não são versionados; são recriados ao rodar os scripts.
+
+## Scripts Python — todos em uso
+
+| Arquivo | Uso |
+|--------|-----|
+| `data_prep.py` | Notebook, `train`, drift, `tsne_explore`, `streamlit` (splits) |
+| `train.py` | Notebook, CI indireto via `tests` que importa `build_pipelines` |
+| `evaluate.py` | Notebook, métricas finais |
+| `model_io.py` | `evaluate`, `serve`, `streamlit`, notebook (carga do modelo) |
+| `tsne_explore.py` | Notebook, redução não linear |
 | `serve.py` | API de inferência |
-| `streamlit_app.py` | Demonstração interativa |
-| `.github/workflows/ci.yml` | CI com pytest |
+| `streamlit_app.py` | Demonstração |
+
+Não há módulos `.py` dispensáveis: remover qualquer um quebra o fluxo do notebook, da API, do Streamlit ou dos testes.
 
 ## Dados
 
-Fontes suportadas: CSV local, variável de ambiente `BREAST_CANCER_CSV`, pasta `data/`, Kaggle via `kagglehub` ou fallback `sklearn.datasets`. Após o primeiro `data_prep`, artefatos ficam em `artifacts/` (gerados localmente; não versionados).
+Fontes suportadas: CSV local, variável de ambiente `BREAST_CANCER_CSV`, pasta `data/`, Kaggle via `kagglehub` ou fallback `sklearn.datasets`. Após o primeiro `data_prep`, artefatos ficam em `artifacts/` (gerados localmente).
 
 ## Licença e instituição
 
