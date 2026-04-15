@@ -1,0 +1,23 @@
+1. Estruturar um projeto de machine learning, integrando planejamento, experimentação e validação ao contexto de negócio
+- Identificação do contexto do problema, objetivos técnicos e métricas de negócio alinhadas e coerentes
+- Planejamento diferenciando experimentação exploratória de projeto orientado à entrega
+- Organização de código adequada à engenharia, com redução de dependência de notebooks e fluxos claros
+- Análise do papel do engenheiro de ML na tomada de decisão técnica com justificativas baseadas em impacto e viabilidade
+
+2. Projetar pipelines de dados e features para evitar overfitting e reduzir custo computacional
+- Identificação de problemas de qualidade de dados, vieses e limitações estruturais com impacto na generalização
+- Modelagem de pipelines de pré-processamento com scikit-learn evitando vazamento de dados
+- Implementação de técnicas de redução de dimensionalidade com justificativa técnica
+- Análise do impacto da redução de dimensionalidade no desempenho, custo computacional e interpretabilidade
+
+3. Construir experimentos reprodutíveis com comparação de modelos, ajuste de hiperparâmetros e MLflow
+- Planejamento estruturado de experimentos com comparação clara entre abordagens
+- Implementação de validação cruzada e ajuste de hiperparâmetros de forma consistente
+- Registro de parâmetros, métricas e versões no MLflow garantindo rastreabilidade
+- Análise crítica dos resultados e justificativa técnica da escolha do modelo final
+
+4. Operacionalizar modelos de machine learning em produção com scikit-learn e MLflow
+- Persistência de modelos de forma versionada e reprodutível
+- Implementação de fluxo de inferência funcional via serviço ou interface
+- Definição de métricas técnicas e de negócio para monitoramento
+- Análise de operação incluindo monitoramento, detecção de drift e estratégias de re-treinamento

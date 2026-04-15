@@ -1,0 +1,204 @@
+## Visão Geral
+
+Neste Projeto de Disciplina, o foco deixa de ser o modelo isolado e passa a ser o projeto de machine learning como um sistema. O objetivo é atuar como engenheiro de machine learning, estruturando, organizando, rastreando, comparando e operacionalizando experimentos, sempre conectando decisões técnicas a objetivos de negócio, custo computacional e viabilidade de produção.
+
+Este projeto representa a evolução do anterior. Os experimentos já realizados devem ser reorganizados, refinados e sistematizados dentro de uma estrutura profissional, reprodutível e orientada à operação.
+
+---
+
+## Objetivo Geral
+
+- Estruturar um projeto completo de machine learning
+- Integrar planejamento, dados, experimentação e operação
+- Utilizar scikit-learn e MLflow
+- Tomar decisões técnicas orientadas a impacto de negócio
+
+---
+
+## Contexto do Projeto
+
+- O problema de negócio, dataset e experimentos iniciais já foram explorados
+- Existem múltiplas abordagens de modelagem testadas
+- O foco agora é organizar e escalar tecnicamente o trabalho
+- O mesmo dataset deve ser reutilizado para garantir comparabilidade entre abordagens
+
+---
+
+## Parte 1: Estruturação do Projeto
+
+### Objetivo
+Demonstrar visão de engenharia sobre machine learning.
+
+### Atividades
+
+- Mapear experimentos anteriores
+  - Modelos testados
+  - Métricas utilizadas
+  - Resultados e limitações
+
+- Definir claramente
+  - Objetivo técnico
+  - Critérios de sucesso
+  - Métricas de negócio
+
+- Reestruturar o projeto
+  - Código em scripts/módulos reutilizáveis
+  - Redução do uso de notebooks
+
+- Analisar dados sob perspectiva de engenharia
+  - Qualidade
+  - Viés
+  - Generalização
+
+---
+
+## Parte 2: Fundação de Dados
+
+### Objetivo
+Garantir uma base de dados confiável e defensável.
+
+### Atividades
+
+- Estruturar ingestão de dados
+  - Fontes
+  - Formatos
+  - Amostragem
+
+- Diagnosticar problemas
+  - Valores ausentes
+  - Ruído
+  - Inconsistências
+  - Vieses
+
+- Analisar impactos
+  - Generalização
+  - Estabilidade
+  - Overfitting
+
+- Documentar limitações do dataset
+
+---
+
+## Parte 3: Experimentação
+
+### Objetivo
+Transformar exploração em evidência experimental.
+
+### Atividades
+
+- Executar experimentos comparativos
+- Selecionar modelos considerando
+  - Desempenho
+  - Custo computacional
+  - Complexidade
+  - Interpretabilidade
+
+- Construir pipelines com scikit-learn
+- Aplicar validação cruzada
+- Ajustar hiperparâmetros
+- Registrar experimentos no MLflow
+  - Parâmetros
+  - Métricas
+  - Versões
+
+---
+
+## Parte 4: Redução de Dimensionalidade
+
+### Objetivo
+Controlar complexidade e melhorar generalização.
+
+### Atividades
+
+- Avaliar necessidade de redução de dimensionalidade
+- Aplicar técnicas
+  - PCA
+  - LDA
+  - t-SNE
+
+- Integrar ao pipeline
+- Re-treinar modelos
+
+- Comparar:
+  - Desempenho
+  - Custo computacional
+  - Interpretabilidade
+
+- Analisar trade-offs e adequação ao problema
+
+---
+
+## Parte 5: Consolidação e Seleção
+
+### Objetivo
+Tomar decisão técnica justificada.
+
+### Atividades
+
+- Analisar experimentos no MLflow
+- Comparar abordagens
+- Justificar modelo final considerando
+  - Métricas
+  - Custo
+  - Complexidade
+  - Operação
+
+- Definir modelo candidato à produção
+
+---
+
+## Parte 6: Operacionalização
+
+### Objetivo
+Simular ou implementar ambiente de produção.
+
+### Atividades
+
+- Persistir modelos versionados
+- Executar inferência consistente
+- Empacotar modelo como artefato
+- Expor via serviço de inferência
+- Integrar com pipeline de CI/CD
+
+- Definir métricas
+  - Técnicas
+  - Negócio
+
+- Monitorar:
+  - Performance pós-deploy
+  - Drift de dados/modelo
+  - Métricas no MLflow
+
+- Planejar re-treinamento contínuo
+
+---
+
+## Entregáveis
+
+- Repositório organizado
+  - Pipelines de dados
+  - Modelos
+  - Configuração do MLflow
+
+- Relatório técnico
+  - Decisões
+  - Comparações
+  - Justificativas
+
+- Demonstração funcional
+  - Inferência
+  - Versionamento
+  - Monitoramento
+
+---
+
+## Considerações Finais
+
+- Código isolado não é suficiente
+- Avaliação prioriza:
+  - Estrutura
+  - Rastreabilidade
+  - Interpretação
+  - Decisões técnicas
+
+O projeto consolida a transição para engenharia de machine learning, com foco em sistemas robustos e operacionais, e não apenas em métricas isoladas.
