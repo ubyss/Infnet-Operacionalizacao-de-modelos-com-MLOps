@@ -1,0 +1,17 @@
+README.md
+pyproject.toml
+src/breast_cancer_mlops/__init__.py
+src/breast_cancer_mlops/data_prep.py
+src/breast_cancer_mlops/evaluate.py
+src/breast_cancer_mlops/model_io.py
+src/breast_cancer_mlops/paths.py
+src/breast_cancer_mlops/serve.py
+src/breast_cancer_mlops/streamlit_app.py
+src/breast_cancer_mlops/train.py
+src/breast_cancer_mlops/tsne_explore.py
+src/breast_cancer_mlops.egg-info/PKG-INFO
+src/breast_cancer_mlops.egg-info/SOURCES.txt
+src/breast_cancer_mlops.egg-info/dependency_links.txt
+src/breast_cancer_mlops.egg-info/requires.txt
+src/breast_cancer_mlops.egg-info/top_level.txt
+tests/test_smoke.py

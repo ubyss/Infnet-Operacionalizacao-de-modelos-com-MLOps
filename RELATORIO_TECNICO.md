@@ -85,7 +85,7 @@ Artefatos t-SNE: `artifacts/exploration/tsne_train_2d.csv` e `tsne_meta.json` (g
 ## 8. Re-treinamento contínuo (estratégia)
 
 1. **Gatilhos:** queda de F1/recall em validação temporal; aumento de flags de drift KS; volume mínimo de novos dados rotulados.
-2. **Processo:** reexecutar `data_prep` (perfil atualizado) → `train` (novos runs) → comparar no MLflow → promover versão no Registry → smoke tests (`pytest`, inferência em API).
+2. **Processo:** reexecutar `python -m breast_cancer_mlops.data_prep` → `python -m breast_cancer_mlops.train` → comparar no MLflow → promover versão no Registry → smoke tests (`pytest`, inferência em API).
 3. **Frequência:** mensal ou trimestral conforme disponibilidade de rótulos; hotfix se drift severo em features críticas.
 
 ## 9. Integração contínua (CI)
@@ -94,12 +94,12 @@ O repositório inclui workflow GitHub Actions (`.github/workflows/ci.yml`) que i
 
 ## 10. Como reproduzir
 
-1. `pip install -r requirements.txt`
-2. `python data_prep.py` (ou notebook, seção 1) — atalho na raiz; implementação em `breast_cancer_mlops/data_prep.py`
-3. `python train.py` — idem `breast_cancer_mlops/train.py`
-4. `python evaluate.py`
-5. `python tsne_explore.py` (exploração t-SNE)
-6. `uvicorn serve:app` e/ou `streamlit run streamlit_app.py` (scripts finos na raiz importam o pacote)
+1. `pip install -r requirements.txt` (instala o pacote em modo editável a partir de `pyproject.toml`)
+2. `python -m breast_cancer_mlops.data_prep` (ou notebook, seção 1)
+3. `python -m breast_cancer_mlops.train`
+4. `python -m breast_cancer_mlops.evaluate`
+5. `python -m breast_cancer_mlops.tsne_explore` (exploração t-SNE)
+6. `uvicorn breast_cancer_mlops.serve:app` e/ou `streamlit run src/breast_cancer_mlops/streamlit_app.py`
 7. `mlflow ui` apontando para a pasta `mlruns/`
 
-Equivalente: `python -m breast_cancer_mlops.train` (e outros módulos), a partir da raiz do repositório.
+Código-fonte em `src/breast_cancer_mlops/`.
