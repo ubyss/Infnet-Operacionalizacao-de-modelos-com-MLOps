@@ -5,8 +5,8 @@ import time
 import pandas as pd
 import streamlit as st
 
-from .data_prep import TARGET_COL, read_saved_splits
-from .model_io import load_model_bundle
+from breast_cancer_mlops.data_prep import TARGET_COL, read_saved_splits
+from breast_cancer_mlops.model_io import load_model_bundle
 
 
 @st.cache_resource
@@ -47,16 +47,17 @@ st.set_page_config(
 st.title("Inferência — câncer de mama")
 st.caption("Valores gerados a partir de casos reais do conjunto de treino (mesma distribuição do projeto).")
 
-try:
-    model, feature_names, run_id = cached_model_bundle()
-    pack = cached_train_xy()
-    if pack is None:
-        raise FileNotFoundError("Splits ausentes. Rode data_prep ou o notebook.")
-    X_train, y_train = pack
-    X_train = X_train[feature_names]
-except Exception as e:
-    st.error(str(e))
-    st.stop()
+with st.spinner("Carregando modelo (MLflow) e splits de treino. Na primeira vez pode levar um ou dois minutos."):
+    try:
+        model, feature_names, run_id = cached_model_bundle()
+        pack = cached_train_xy()
+        if pack is None:
+            raise FileNotFoundError("Splits ausentes. Rode data_prep ou o notebook.")
+        X_train, y_train = pack
+        X_train = X_train[feature_names]
+    except Exception as e:
+        st.error(str(e))
+        st.stop()
 
 with st.sidebar:
     st.header("Modelo")
